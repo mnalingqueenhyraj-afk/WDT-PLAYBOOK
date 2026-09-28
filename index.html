@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Operations playbook for Who Did That Professional Cleaning, prepared by Queen Hyra of CLTS Creatives.">
+<style>*,*::before,*::after{box-sizing:border-box}html{-webkit-text-size-adjust:100%}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>The WDT Playbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=Caveat:wght@600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#F4F8F8;
+  --paper:#FFFFFF;
+  --ink:#0E2F36;
+  --ink-soft:#4A6368;
+  --line:#D6E3E4;
+  --tile:#E6EFF0;
+  --aqua:#12A392;
+  --aqua-ink:#0B7568;
+  --aqua-wash:#DDF3EF;
+  --note:#FFE27A;
+  --note-ink:#3A3000;
+  --warn:#C2410C;
+  --shadow:0 1px 0 rgba(14,47,54,.06),0 8px 24px -12px rgba(14,47,54,.18);
+  --display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --body:"Figtree","Segoe UI",system-ui,-apple-system,sans-serif;
+  --hand:"Caveat","Comic Sans MS","Bradley Hand",cursive;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0C1A1D;--paper:#12252A;--ink:#E4F0F0;--ink-soft:#9AB3B6;--line:#24403F;--tile:#163035;
+    --aqua:#35C9B6;--aqua-ink:#5FDCCB;--aqua-wash:#123A37;--note:#F2D466;--note-ink:#2B2300;--warn:#FB923C;
+    --shadow:0 1px 0 rgba(0,0,0,.3),0 10px 28px -14px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0C1A1D;--paper:#12252A;--ink:#E4F0F0;--ink-soft:#9AB3B6;--line:#24403F;--tile:#163035;
+  --aqua:#35C9B6;--aqua-ink:#5FDCCB;--aqua-wash:#123A37;--note:#F2D466;--note-ink:#2B2300;--warn:#FB923C;
+  --shadow:0 1px 0 rgba(0,0,0,.3),0 10px 28px -14px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:1120px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);line-height:1.1;text-wrap:balance;margin:0}
+h2{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.02em}
+h3{font-size:20px;font-weight:700}
+p{margin:0}
+.lede{font-size:18px;color:var(--ink-soft);max-width:62ch}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--aqua-ink)}
+a{color:var(--aqua-ink)}
+:focus-visible{outline:3px solid var(--aqua);outline-offset:2px;border-radius:4px}
+
+/* HERO */
+.hero{position:relative;margin-top:24px;border-radius:20px;overflow:hidden;background:var(--paper);border:1px solid var(--line);
+  background-image:linear-gradient(var(--tile) 1px,transparent 1px),linear-gradient(90deg,var(--tile) 1px,transparent 1px);
+  background-size:44px 44px;background-position:-1px -1px}
+.hero-in{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;padding:clamp(28px,5vw,56px);align-items:end}
+.hero h1{font-size:clamp(46px,8vw,96px);font-weight:800;letter-spacing:-.04em;line-height:.95}
+.hero h1 .q{color:var(--aqua)}
+.hero .sub{margin-top:20px;font-size:19px;max-width:40ch;color:var(--ink-soft)}
+.meta{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px 20px;font-family:var(--mono);font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em}
+.note{background:var(--note);color:var(--note-ink);padding:22px 22px 26px;border-radius:4px;transform:rotate(2.5deg);box-shadow:var(--shadow);max-width:300px;justify-self:end}
+.note .hand{font-family:var(--hand);font-size:44px;line-height:1;font-weight:700}
+.note p{margin-top:10px;font-size:15px;line-height:1.45}
+@media (prefers-reduced-motion:no-preference){
+  .note{animation:settle .9s cubic-bezier(.2,.8,.2,1) both .2s}
+  @keyframes settle{from{transform:rotate(-6deg) translateY(10px)}to{transform:rotate(2.5deg)}}
+}
+
+/* LAYOUT */
+.grid{display:grid;grid-template-columns:220px 1fr;gap:48px;margin-top:48px}
+nav.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px);align-self:start;display:flex;flex-direction:column;gap:2px;font-size:14px}
+nav.toc a{text-decoration:none;color:var(--ink-soft);padding:6px 10px;border-radius:6px;display:flex;gap:10px}
+nav.toc a span{font-family:var(--mono);font-size:11px;color:var(--aqua-ink);padding-top:3px}
+nav.toc a:hover{background:var(--tile);color:var(--ink)}
+main{display:flex;flex-direction:column;gap:72px;min-width:0}
+section{display:flex;flex-direction:column;gap:20px;scroll-margin-top:24px}
+.head{display:flex;flex-direction:column;gap:10px}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.card p{color:var(--ink-soft);font-size:15px}
+.tag{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--aqua-ink)}
+
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.panel-h{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:var(--tile)}
+.panel-h h3{font-size:17px}
+.panel-b{padding:20px;display:flex;flex-direction:column;gap:14px}
+
+.tbl-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
+td:first-child{font-family:var(--mono);font-size:13px;color:var(--aqua-ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:0}
+
+.script{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.script-h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px dashed var(--line)}
+.script-h strong{font-family:var(--display);font-size:16px}
+.script pre{margin:0;padding:16px;white-space:pre-wrap;font-family:var(--body);font-size:15px;line-height:1.65;color:var(--ink)}
+.copy{font-family:var(--mono);font-size:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:6px 12px;border-radius:999px;cursor:pointer}
+.copy:hover{border-color:var(--aqua);color:var(--aqua-ink)}
+.copy.done{background:var(--aqua);border-color:var(--aqua);color:#fff}
+
+.objs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.obj{border-left:3px solid var(--aqua);background:var(--paper);padding:14px 16px;border-radius:0 10px 10px 0;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.obj b{display:block;font-family:var(--display);margin-bottom:4px}
+.obj p{font-size:15px;color:var(--ink-soft)}
+
+.cadence{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.day{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px}
+.day .d{font-family:var(--mono);font-size:12px;color:var(--aqua-ink)}
+.day .a{font-weight:600;margin-top:4px}
+.day .x{font-size:13px;color:var(--ink-soft)}
+
+.jobsheet{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.js-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 16px;padding:16px 20px;border-bottom:2px dashed var(--line);font-family:var(--mono);font-size:12px;color:var(--ink-soft)}
+.js-top b{color:var(--ink)}
+.rooms{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.room{padding:16px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.room h4{margin:0 0 8px;font-family:var(--display);font-size:15px}
+.room label{display:flex;gap:10px;font-size:14px;padding:4px 0;cursor:pointer;align-items:flex-start}
+.room input{accent-color:var(--aqua);margin-top:4px;flex:none}
+.room label:has(input:checked) span{color:var(--ink-soft);text-decoration:line-through}
+.js-foot{padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;background:var(--aqua-wash)}
+.js-foot .prog{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
+.sign{font-family:var(--hand);font-size:26px;color:var(--aqua-ink)}
+
+.steps{display:flex;flex-direction:column;gap:0;border-left:2px solid var(--line);margin-left:10px}
+.step{position:relative;padding:0 0 24px 26px}
+.step:last-child{padding-bottom:0}
+.step::before{content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:3px solid var(--aqua)}
+.step .when{font-family:var(--mono);font-size:12px;color:var(--aqua-ink);text-transform:uppercase;letter-spacing:.08em}
+.step h3{font-size:18px;margin-top:2px}
+.step p{color:var(--ink-soft);font-size:15px;margin-top:4px;max-width:64ch}
+
+ul.clean{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+ul.clean li{padding-left:22px;position:relative}
+ul.clean li::before{content:"";position:absolute;left:2px;top:.62em;width:10px;height:6px;border-left:2px solid var(--aqua);border-bottom:2px solid var(--aqua);transform:rotate(-45deg)}
+
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.phase{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.phase .wk{font-family:var(--display);font-size:28px;font-weight:800;color:var(--aqua)}
+
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.kpi{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.kpi .n{font-family:var(--display);font-size:15px;font-weight:700}
+.kpi .t{font-size:13px;color:var(--ink-soft)}
+
+.offer{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pkg{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.pkg.pick{border:2px solid var(--aqua);position:relative}
+.pkg.pick::after{content:"Where I'd start";position:absolute;top:-12px;left:18px;background:var(--aqua);color:#fff;font-family:var(--mono);font-size:11px;padding:3px 10px;border-radius:999px;letter-spacing:.06em}
+.pkg h3{font-size:22px}
+.pkg .for{font-size:14px;color:var(--ink-soft)}
+
+.close{background:var(--ink);color:var(--bg);border-radius:20px;padding:clamp(28px,5vw,48px);display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:center}
+.close h2{color:var(--bg)}
+.close p{color:color-mix(in srgb,var(--bg) 78%,transparent);margin-top:14px;max-width:52ch}
+.contact{display:flex;flex-direction:column;gap:10px}
+.cline{display:flex;justify-content:space-between;align-items:center;gap:10px;background:color-mix(in srgb,var(--bg) 10%,transparent);border-radius:10px;padding:12px 14px;flex-wrap:wrap}
+.cline span{font-family:var(--mono);font-size:14px;user-select:all;word-break:break-all}
+.close .copy{background:transparent;color:var(--bg);border-color:color-mix(in srgb,var(--bg) 40%,transparent)}
+.sig{font-family:var(--hand);font-size:34px;color:var(--note);margin-top:18px}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.subj{font-family:var(--mono);font-size:12px;color:var(--ink-soft);padding:0 16px;margin-top:12px}
+.subj b{color:var(--ink);font-family:var(--body);font-size:14px}
+.chat{background:var(--tile);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:10px;max-width:440px}
+.chat .top{font-family:var(--mono);font-size:12px;color:var(--ink-soft);text-align:center}
+.bub{padding:10px 14px;border-radius:14px;font-size:14px;line-height:1.5;max-width:85%}
+.bub.in{background:var(--paper);align-self:flex-start;border-bottom-left-radius:4px}
+.bub.out{background:var(--aqua-wash);align-self:flex-end;border-bottom-right-radius:4px}
+.bub small{display:block;font-family:var(--mono);font-size:10px;color:var(--ink-soft);margin-top:4px;text-align:right}
+.chat-row{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start}
+.cal{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.mo{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px}
+.mo .d{font-family:var(--mono);font-size:12px;color:var(--aqua-ink)}
+.mo .a{font-weight:600;margin-top:4px}
+.mo .x{font-size:13px;color:var(--ink-soft)}
+
+@media (max-width:880px){
+  .two,.chat-row{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr;gap:32px}
+  nav.toc{position:static;flex-direction:row;flex-wrap:wrap;gap:6px}
+  nav.toc a{background:var(--paper);border:1px solid var(--line);font-size:13px}
+  .hero-in,.close{grid-template-columns:1fr}
+  .note{justify-self:start}
+  .phases,.offer{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="hero-in">
+    <div>
+      <div class="eyebrow">Operations playbook &middot; Who Did That Professional Cleaning</div>
+      <h1 style="margin-top:14px">Who did <span class="q">that?</span></h1>
+      <p class="sub">That is the question every client should ask when they walk into a space you cleaned. This is the system that makes sure the answer is always WDT, and that you are not the one running every single piece of it.</p>
+      <div class="meta"><span>Prepared by Queen Hyra</span><span>CLTS Creatives</span><span>For the owner of WDT</span></div>
+    </div>
+    <aside class="note" aria-label="Short summary">
+      <div class="hand">"WDT did."</div>
+      <p>Admin handled. Leads called and emailed. WhatsApp answered fast. Cleaners trained the same way every time. Clients get photo proof after every job. You get one clear report every Monday.</p>
+    </aside>
+  </div>
+</header>
+
+<div class="grid">
+<nav class="toc" aria-label="Sections">
+  <a href="#why"><span>01</span>Where it leaks</a>
+  <a href="#admin"><span>02</span>Admin</a>
+  <a href="#calling"><span>03</span>Cold calling</a>
+  <a href="#outreach"><span>04</span>Email outreach</a>
+  <a href="#marketing"><span>05</span>Email marketing</a>
+  <a href="#whatsapp"><span>06</span>WhatsApp</a>
+  <a href="#cleaners"><span>07</span>Cleaner standards</a>
+  <a href="#onboarding"><span>08</span>Onboarding cleaners</a>
+  <a href="#clients"><span>09</span>Client journey</a>
+  <a href="#rollout"><span>10</span>First 90 days</a>
+  <a href="#start"><span>11</span>Next step</a>
+</nav>
+
+<main>
+
+<section id="why">
+  <div class="head">
+    <div class="eyebrow">01 &middot; Where cleaning businesses leak money</div>
+    <h2>The cleaning is usually fine. Everything around it is where jobs get lost.</h2>
+    <p class="lede">A great clean is not enough when the owner is also the receptionist, the scheduler, the recruiter, the trainer and the sales team. Something always slips. This playbook fixes that.</p>
+  </div>
+  <div class="cards">
+    <div class="card"><span class="tag">Slow replies</span><h3>Leads go cold</h3><p>A quote request sits for a day and the client books whoever answered first.</p></div>
+    <div class="card"><span class="tag">No pipeline</span><h3>Feast or famine</h3><p>Busy month, quiet month. Nobody is calling new accounts when the calendar is full.</p></div>
+    <div class="card"><span class="tag">Mixed standards</span><h3>Every cleaner does it their way</h3><p>One missed skirting board turns into a complaint, then a lost regular.</p></div>
+    <div class="card"><span class="tag">Hiring stress</span><h3>New cleaners learn by guessing</h3><p>No clear first week means slow starts and people quitting early.</p></div>
+  </div>
+</section>
+
+<section id="admin">
+  <div class="head">
+    <div class="eyebrow">02 &middot; Admin system</div>
+    <h2>Your back office, run on a daily rhythm</h2>
+    <p class="lede">I work the same checklist every day so nothing depends on memory. You can see it all in one shared tracker.</p>
+  </div>
+  <div class="panel">
+    <div class="panel-h"><h3>Daily admin rhythm</h3><span class="tag">Your time zone</span></div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>When</th><th>What I do</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td>Start of day</td><td>Clear inbox, WhatsApp, voicemails, website forms and social DMs. Reply to every new lead.</td><td>Fast replies win quotes. Target: under 15 minutes during business hours.</td></tr>
+        <tr><td>Morning</td><td>Confirm today's jobs with clients and cleaners. Send tomorrow's reminders.</td><td>Fewer no-shows, fewer "I forgot you were coming."</td></tr>
+        <tr><td>Midday</td><td>Update the schedule, handle reschedules, cover sick calls from the backup list.</td><td>No gaps in the calendar, no angry clients.</td></tr>
+        <tr><td>Afternoon</td><td>Send invoices for finished jobs, chase anything overdue, log photos.</td><td>Money comes in on time. Proof of work is on file.</td></tr>
+        <tr><td>End of day</td><td>Send review requests, flag issues to you in one short message.</td><td>More 5-star reviews. You only hear what needs you.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="cards">
+    <div class="card"><span class="tag">Weekly</span><h3>Monday report</h3><p>Jobs done, new bookings, calls, emails, WhatsApp enquiries, quotes sent, reviews, money in and money owed. One page.</p></div>
+    <div class="card"><span class="tag">Tools</span><h3>Your stack, organized</h3><p>Google Workspace, a booking or CRM tool (Jobber, Go High Level, or what you already use), and a group chat for cleaners.</p></div>
+    <div class="card"><span class="tag">Rule</span><h3>You only get escalations</h3><p>Complaints, damage, pricing calls and hiring decisions go to you. The rest I handle.</p></div>
+  </div>
+</section>
+
+<section id="calling">
+  <div class="head">
+    <div class="eyebrow">03 &middot; Cold calling system</div>
+    <h2>A steady flow of new accounts, even when you are busy cleaning</h2>
+    <p class="lede">WDT calls new accounts every week, busy or not. The goal of every call is simple: book a free walkthrough quote. Nothing more.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card"><span class="tag">List A</span><h3>Offices and clinics</h3><p>Small offices, dental and medical clinics, gyms. Recurring weekly contracts.</p></div>
+    <div class="card"><span class="tag">List B</span><h3>Property managers and agents</h3><p>End of lease, move-in, move-out cleans. They need someone reliable on short notice.</p></div>
+    <div class="card"><span class="tag">List C</span><h3>Short-stay hosts</h3><p>Airbnb and holiday rentals. Turnover cleans with photo reports they can trust.</p></div>
+  </div>
+
+  <div class="script">
+    <div class="script-h"><strong>Main call script</strong><button class="copy" type="button" data-copy="s1">Copy</button></div>
+<pre id="s1">Hi, is this [Name]?
+
+Hi [Name], this is Queen calling from Who Did That Professional Cleaning. I'll be quick, is now an okay time for 30 seconds?
+
+We clean [offices / rentals / clinics] around [area]. The reason I'm calling is most [office managers / property managers] I speak with either love their cleaner, or they're a little tired of chasing the small stuff that gets missed.
+
+Which one sounds more like you right now?
+
+[If they have small issues]
+Totally get it. What we do differently is every clean ends with before and after photos sent straight to you, so you never have to wonder what got done.
+
+Would it make sense to have [Owner] swing by for a quick walkthrough and give you a free quote? Takes about 15 minutes. Does [day] or [day] work better?
+
+[If they love their cleaner]
+That's great to hear, honestly. Can I send you our details anyway, so you have a backup if they're ever away or booked out?</pre>
+  </div>
+
+  <div class="objs">
+    <div class="obj"><b>"We already have a cleaner."</b><p>Good, that means you know what good looks like. Most of our clients had one too. Can I leave our details as a backup for holidays or deep cleans?</p></div>
+    <div class="obj"><b>"Just send me an email."</b><p>Happy to. So I send the right info, is it more for regular cleaning or a one-off deep clean? And is [email] the best one?</p></div>
+    <div class="obj"><b>"It's too expensive."</b><p>Fair. We haven't quoted yet though, so let's see. The walkthrough is free and there's no pressure to book.</p></div>
+    <div class="obj"><b>"Not interested."</b><p>No worries at all. Just so I don't bother you again, is it that you're sorted, or it's just bad timing?</p></div>
+    <div class="obj"><b>"I'm not the right person."</b><p>Thanks for telling me. Who usually looks after cleaning or facilities there? I'll reach out to them directly.</p></div>
+  </div>
+
+  <div class="script">
+    <div class="script-h"><strong>Voicemail (under 20 seconds)</strong><button class="copy" type="button" data-copy="s2">Copy</button></div>
+<pre id="s2">Hi [Name], it's Queen from Who Did That Professional Cleaning. Quick one: we do [office / rental] cleaning around [area] with photo proof after every visit. I'll send you a short text so you have our number. Have a good day.</pre>
+  </div>
+
+  <div class="script">
+    <div class="script-h"><strong>Follow-up text after the call</strong><button class="copy" type="button" data-copy="s3">Copy</button></div>
+<pre id="s3">Hi [Name], Queen here from WDT Professional Cleaning. Thanks for your time today. Here's our number if you ever need a hand: [number]. Happy to book a free walkthrough whenever it suits.</pre>
+  </div>
+
+  <div class="panel">
+    <div class="panel-h"><h3>Follow-up cadence per lead</h3><span class="tag">6 touches, 14 days</span></div>
+    <div class="panel-b">
+      <div class="cadence">
+        <div class="day"><div class="d">Day 1</div><div class="a">Call + voicemail</div><div class="x">Text right after</div></div>
+        <div class="day"><div class="d">Day 2</div><div class="a">Short email</div><div class="x">Photo example attached</div></div>
+        <div class="day"><div class="d">Day 4</div><div class="a">Call again</div><div class="x">Different time of day</div></div>
+        <div class="day"><div class="d">Day 7</div><div class="a">Text</div><div class="x">Offer the free walkthrough</div></div>
+        <div class="day"><div class="d">Day 10</div><div class="a">Call</div><div class="x">Last live attempt</div></div>
+        <div class="day"><div class="d">Day 14</div><div class="a">Closing email</div><div class="x">"Should I close your file?"</div></div>
+      </div>
+      <p style="color:var(--ink-soft);font-size:15px">Every call is logged in a tracker with the outcome, next action and date. Nobody falls through the cracks and you can see the pipeline anytime.</p>
+    </div>
+  </div>
+</section>
+
+<section id="outreach">
+  <div class="head">
+    <div class="eyebrow">04 &middot; Email outreach</div>
+    <h2>Cold emails that sound like a person, not a flyer</h2>
+    <p class="lede">Emails run alongside the calls. Short, plain text, one question each. They warm people up so the next call is easier, and they catch the ones who never pick up the phone.</p>
+  </div>
+
+  <div class="script">
+    <div class="script-h"><strong>Email 1 &middot; Day 2 &middot; First touch</strong><button class="copy" type="button" data-copy="e1">Copy</button></div>
+    <div class="subj">Subject: <b>cleaning at [Business Name]</b></div>
+<pre id="e1">Hi [Name],
+
+Quick one. I'm with Who Did That Professional Cleaning and we look after [offices / rentals / clinics] around [area].
+
+The thing our clients like most: after every clean, they get before and after photos. No guessing what got done.
+
+Would a free 15-minute walkthrough quote be useful sometime this month?
+
+[Owner Name]
+Who Did That Professional Cleaning
+[Phone]</pre>
+  </div>
+
+  <div class="script">
+    <div class="script-h"><strong>Email 2 &middot; Day 5 &middot; Proof</strong><button class="copy" type="button" data-copy="e2">Copy</button></div>
+    <div class="subj">Subject: <b>Re: cleaning at [Business Name]</b></div>
+<pre id="e2">Hi [Name],
+
+Here's what one of our after-clean reports looks like [attach 2 photos].
+
+Clients tell us it saves them from walking around checking every room. If something's missed, we come back and fix it free.
+
+Worth a quick look for [Business Name]?
+
+[Owner Name]</pre>
+  </div>
+
+  <div class="script">
+    <div class="script-h"><strong>Email 3 &middot; Day 9 &middot; Easy yes</strong><button class="copy" type="button" data-copy="e3">Copy</button></div>
+    <div class="subj">Subject: <b>one-off deep clean?</b></div>
+<pre id="e3">Hi [Name],
+
+If switching cleaners feels like a big move, no pressure. A lot of our regular clients started with one deep clean just to see the difference.
+
+Want me to pencil one in? I have [day] or [day] open.
+
+[Owner Name]</pre>
+  </div>
+
+  <div class="script">
+    <div class="script-h"><strong>Email 4 &middot; Day 14 &middot; Close the file</strong><button class="copy" type="button" data-copy="e4">Copy</button></div>
+    <div class="subj">Subject: <b>should I close your file?</b></div>
+<pre id="e4">Hi [Name],
+
+I've reached out a few times and don't want to fill your inbox.
+
+Should I close your file for now, or is cleaning something you'd like to revisit later in the year?
+
+Either answer is totally fine.
+
+[Owner Name]</pre>
+  </div>
+
+  <div class="cards">
+    <div class="card"><span class="tag">Sending</span><h3>Small daily batches</h3><p>20 to 40 personal emails a day from a warmed-up inbox. Protects your domain so emails land in the inbox, not spam.</p></div>
+    <div class="card"><span class="tag">Personal</span><h3>One real line each</h3><p>I add one line about their business, like their location or a recent review, so it never reads like a mass blast.</p></div>
+    <div class="card"><span class="tag">Replies</span><h3>Answered same day</h3><p>Every reply gets a response and goes straight into the pipeline tracker with a next step.</p></div>
+  </div>
+</section>
+
+<section id="marketing">
+  <div class="head">
+    <div class="eyebrow">05 &middot; Email marketing</div>
+    <h2>Turn past clients into repeat bookings</h2>
+    <p class="lede">Your cheapest new job is from someone who already knows you. One simple email a month keeps WDT top of mind, so they book you again and send friends your way.</p>
+  </div>
+
+  <div class="panel">
+    <div class="panel-h"><h3>Who gets what</h3><span class="tag">3 simple lists</span></div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>List</th><th>Who is on it</th><th>What they get</th></tr></thead>
+      <tbody>
+        <tr><td>Regulars</td><td>Weekly or fortnightly clients</td><td>Thank-yous, add-on offers (oven, windows, carpets), referral rewards</td></tr>
+        <tr><td>One-offs</td><td>Booked once, never came back</td><td>Seasonal deep clean offers and a rebook nudge every 6 to 8 weeks</td></tr>
+        <tr><td>Leads</td><td>Asked for a quote but didn't book</td><td>Monthly tips email and a first-clean offer</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="cal">
+    <div class="mo"><div class="d">Every month</div><div class="a">Cleaning tip + offer</div><div class="x">One short tip, one clear offer</div></div>
+    <div class="mo"><div class="d">Each season</div><div class="a">Deep clean push</div><div class="x">Spring clean, pre-holiday, new year reset</div></div>
+    <div class="mo"><div class="d">Peak moving months</div><div class="a">End of lease</div><div class="x">To agents and renters on the list</div></div>
+    <div class="mo"><div class="d">Always on</div><div class="a">Referral reward</div><div class="x">Give a friend a discount, get one too</div></div>
+  </div>
+
+  <div class="two">
+    <div class="script">
+      <div class="script-h"><strong>Monthly email</strong><button class="copy" type="button" data-copy="m1">Copy</button></div>
+      <div class="subj">Subject: <b>the 2-minute trick for streak-free glass</b></div>
+<pre id="m1">Hi [First Name],
+
+Quick tip from our team: wipe glass with a damp microfiber cloth first, then buff with a dry one. No spray needed, no streaks.
+
+And if you'd rather not bother at all, we've got a few spots open this month for a full clean.
+
+Reply to this email or tap here to book: [link]
+
+The WDT team</pre>
+    </div>
+    <div class="script">
+      <div class="script-h"><strong>Win-back email</strong><button class="copy" type="button" data-copy="m2">Copy</button></div>
+      <div class="subj">Subject: <b>it's been a while, [First Name]</b></div>
+<pre id="m2">Hi [First Name],
+
+We cleaned your place back in [month] and it's been a little while.
+
+If you're ready for a refresh, reply "YES" and we'll send you a couple of times that work this month. Returning clients get [offer] on their next clean.
+
+The WDT team</pre>
+    </div>
+    <div class="script">
+      <div class="script-h"><strong>Referral email</strong><button class="copy" type="button" data-copy="m3">Copy</button></div>
+      <div class="subj">Subject: <b>know someone who'd love this?</b></div>
+<pre id="m3">Hi [First Name],
+
+Most of our best clients came from people like you telling a friend.
+
+If you know someone who needs a hand, send them our way. They get [offer] on their first clean, and you get [reward] on your next one.
+
+Just have them mention your name when they book.
+
+Thanks for trusting us,
+The WDT team</pre>
+    </div>
+    <div class="script">
+      <div class="script-h"><strong>Seasonal deep clean</strong><button class="copy" type="button" data-copy="m4">Copy</button></div>
+      <div class="subj">Subject: <b>deep clean spots for [month]</b></div>
+<pre id="m4">Hi [First Name],
+
+[Season] is when the dust we don't see starts to show: skirting boards, fans, inside the oven.
+
+We've opened [number] deep clean spots for [month]. Once they're gone, they're gone.
+
+Grab one here: [link]
+
+The WDT team</pre>
+    </div>
+  </div>
+</section>
+
+<section id="whatsapp">
+  <div class="head">
+    <div class="eyebrow">06 &middot; WhatsApp enquiries and follow-ups</div>
+    <h2>Every WhatsApp enquiry answered fast, and followed up until it books</h2>
+    <p class="lede">A lot of cleaning jobs start with a quick WhatsApp message. The first business to reply properly usually wins. I set up quick replies, a simple enquiry flow, and follow-ups so no chat is left on "seen".</p>
+  </div>
+
+  <div class="chat-row">
+    <div class="chat" aria-label="Example WhatsApp enquiry">
+      <div class="top">Example chat</div>
+      <div class="bub in">Hi, how much for a clean? 3 bed house<small>9:02</small></div>
+      <div class="bub out">Hi! Thanks for messaging Who Did That Professional Cleaning. Happy to help. Is this a regular clean or a one-off deep clean? And which suburb are you in?<small>9:04</small></div>
+      <div class="bub in">One-off, moving out next week. [Suburb]<small>9:06</small></div>
+      <div class="bub out">Perfect, we do end of lease cleans all the time. How many bathrooms, and would you like oven and windows included?<small>9:07</small></div>
+      <div class="bub in">2 baths, yes to oven<small>9:10</small></div>
+      <div class="bub out">Great. For that it's [price]. I can do [day] or [day]. Which works better for you?<small>9:12</small></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="when">Within 5 min</div><h3>Greet and ask 2 questions</h3><p>Type of clean and suburb. Keeps it easy for them to answer.</p></div>
+      <div class="step"><div class="when">Next</div><h3>Get the details</h3><p>Bedrooms, bathrooms, add-ons, photos if needed. Enough to quote with confidence.</p></div>
+      <div class="step"><div class="when">Same chat</div><h3>Quote with two time options</h3><p>Never "let me know when you're free". Two specific options get a faster yes.</p></div>
+      <div class="step"><div class="when">Booked</div><h3>Confirm and hand off</h3><p>Booking goes into the calendar, confirmation sent, cleaner assigned.</p></div>
+    </div>
+  </div>
+
+  <div class="two">
+    <div class="script">
+      <div class="script-h"><strong>Quick reply: greeting</strong><button class="copy" type="button" data-copy="w1">Copy</button></div>
+<pre id="w1">Hi! Thanks for messaging Who Did That Professional Cleaning. Happy to help. Is this for a regular clean or a one-off deep clean? And which suburb are you in?</pre>
+    </div>
+    <div class="script">
+      <div class="script-h"><strong>Quick reply: after hours</strong><button class="copy" type="button" data-copy="w2">Copy</button></div>
+<pre id="w2">Hi! Thanks for reaching out to WDT. Our team is off for the night, but we'll reply first thing in the morning. To speed things up, send us the type of clean, your suburb, and number of bedrooms and bathrooms.</pre>
+    </div>
+    <div class="script">
+      <div class="script-h"><strong>Quick reply: need photos</strong><button class="copy" type="button" data-copy="w3">Copy</button></div>
+<pre id="w3">To give you an accurate price, could you send a few quick photos of the kitchen, bathroom and main living area? No need to tidy up first, we've seen it all!</pre>
+    </div>
+    <div class="script">
+      <div class="script-h"><strong>Quick reply: quote</strong><button class="copy" type="button" data-copy="w4">Copy</button></div>
+<pre id="w4">Thanks for the details! For a [type of clean] at your place, it's [price]. That includes [what's included]. I have [day] or [day] available. Which works better for you?</pre>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-h"><h3>Follow-up when they go quiet after a quote</h3><span class="tag">4 touches, then stop</span></div>
+    <div class="panel-b">
+      <div class="cadence">
+        <div class="day"><div class="d">Same day</div><div class="a">Gentle check</div><div class="x">Any questions on the quote?</div></div>
+        <div class="day"><div class="d">Day 2</div><div class="a">Slot reminder</div><div class="x">Dates filling up</div></div>
+        <div class="day"><div class="d">Day 5</div><div class="a">Help offer</div><div class="x">Adjust to fit their budget</div></div>
+        <div class="day"><div class="d">Day 10</div><div class="a">Friendly close</div><div class="x">Door stays open</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="two">
+    <div class="script">
+      <div class="script-h"><strong>Same day</strong><button class="copy" type="button" data-copy="w5">Copy</button></div>
+<pre id="w5">Hi [Name], just checking you got the quote okay. Any questions at all, I'm here.</pre>
+    </div>
+    <div class="script">
+      <div class="script-h"><strong>Day 2</strong><button class="copy" type="button" data-copy="w6">Copy</button></div>
+<pre id="w6">Hi [Name], quick heads up, [day] is filling up fast. Want me to hold a spot for you?</pre>
+    </div>
+    <div class="script">
+      <div class="script-h"><strong>Day 5</strong><button class="copy" type="button" data-copy="w7">Copy</button></div>
+<pre id="w7">Hi [Name], if the price is a bit much right now, we can focus on the rooms that matter most to you. Want me to put together a smaller option?</pre>
+    </div>
+    <div class="script">
+      <div class="script-h"><strong>Day 10</strong><button class="copy" type="button" data-copy="w8">Copy</button></div>
+<pre id="w8">Hi [Name], I'll leave it here so I'm not bugging you. Whenever you need a hand, just message this number and we'll sort you out.</pre>
+    </div>
+  </div>
+</section>
+
+<section id="cleaners">
+  <div class="head">
+    <div class="eyebrow">07 &middot; Cleaner standards</div>
+    <h2>Same clean, every cleaner, every time</h2>
+    <p class="lede">Each job gets a job sheet. Cleaners tick it off on their phone and snap photos at the end. Try ticking a few boxes below, this is how it works on the day.</p>
+  </div>
+
+  <div class="jobsheet">
+    <div class="js-top">
+      <span>Job <b>WDT-1042</b></span><span>Type <b>Standard residential</b></span><span>Team <b>2 cleaners</b></span><span>Sample job sheet</span>
+    </div>
+    <div class="rooms" id="rooms">
+      <div class="room"><h4>Kitchen</h4>
+        <label><input type="checkbox" id="k1"><span>Benchtops wiped and sanitized</span></label>
+        <label><input type="checkbox" id="k2"><span>Stovetop and splashback degreased</span></label>
+        <label><input type="checkbox" id="k3"><span>Sink and tap polished, no water marks</span></label>
+        <label><input type="checkbox" id="k4"><span>Microwave in and out</span></label>
+      </div>
+      <div class="room"><h4>Bathroom</h4>
+        <label><input type="checkbox" id="b1"><span>Toilet inside, outside and base</span></label>
+        <label><input type="checkbox" id="b2"><span>Shower glass, no streaks</span></label>
+        <label><input type="checkbox" id="b3"><span>Mirror and vanity</span></label>
+        <label><input type="checkbox" id="b4"><span>Floor mopped to the corners</span></label>
+      </div>
+      <div class="room"><h4>Living and bedrooms</h4>
+        <label><input type="checkbox" id="l1"><span>Dust high to low</span></label>
+        <label><input type="checkbox" id="l2"><span>Skirting boards and light switches</span></label>
+        <label><input type="checkbox" id="l3"><span>Vacuum under furniture edges</span></label>
+        <label><input type="checkbox" id="l4"><span>Beds made, cushions reset</span></label>
+      </div>
+      <div class="room"><h4>Before you leave</h4>
+        <label><input type="checkbox" id="f1"><span>After photos of every room</span></label>
+        <label><input type="checkbox" id="f2"><span>Bins emptied, bags out</span></label>
+        <label><input type="checkbox" id="f3"><span>Lights off, doors locked</span></label>
+        <label><input type="checkbox" id="f4"><span>Note anything damaged or odd</span></label>
+      </div>
+    </div>
+    <div class="js-foot"><span class="prog" id="prog">0 of 16 done</span><span class="sign" id="sign">Signed off by: ______</span></div>
+  </div>
+
+  <div class="cards">
+    <div class="card"><span class="tag">Before the job</span><h3>Check in</h3><p>Confirm the job in the group chat the night before. Message "on my way" when leaving. Arrive on time or text if running late.</p></div>
+    <div class="card"><span class="tag">During</span><h3>Follow the sheet</h3><p>Top to bottom, dry to wet, back of the room to the door. Report breakages straight away, never hide them.</p></div>
+    <div class="card"><span class="tag">After</span><h3>Proof and sign-off</h3><p>Upload after photos, tick the last box, put your name on it. That is the "Who did that" moment.</p></div>
+    <div class="card"><span class="tag">Quality</span><h3>Monthly spot checks</h3><p>Random photo reviews and client ratings. Top cleaners get first pick of shifts.</p></div>
+  </div>
+</section>
+
+<section id="onboarding">
+  <div class="head">
+    <div class="eyebrow">08 &middot; Onboarding cleaners</div>
+    <h2>From job ad to trusted cleaner in two weeks</h2>
+    <p class="lede">I handle the ad, the screening and the paperwork. You only meet the people worth meeting.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="when">Step 1</div><h3>Post the job ad</h3><p>Short, clear ad on local job boards and Facebook groups. Three screening questions built into the application so the wrong fits filter themselves out.</p></div>
+    <div class="step"><div class="when">Step 2</div><h3>10-minute phone screen</h3><p>I check availability, transport, experience and attitude. I send you a shortlist with my notes.</p></div>
+    <div class="step"><div class="when">Step 3</div><h3>Paid trial clean</h3><p>They join a senior cleaner on a real job. The senior cleaner scores them on the job sheet. You decide yes or no.</p></div>
+    <div class="step"><div class="when">Step 4</div><h3>Paperwork and setup</h3><p>Contract, ID, any checks required in your area, pay details, group chat invite, uniform and kit list. All tracked so nothing is missing.</p></div>
+    <div class="step"><div class="when">Step 5</div><h3>First week plan</h3><p>Day 1 shadow. Days 2 and 3 clean with a buddy. Days 4 and 5 solo with photo review. End of week check-in call with me.</p></div>
+    <div class="step"><div class="when">Step 6</div><h3>30-day review</h3><p>Client feedback, photo scores, punctuality. Pass means they join the regular roster.</p></div>
+  </div>
+
+  <div class="script">
+    <div class="script-h"><strong>Job ad, ready to post</strong><button class="copy" type="button" data-copy="s4">Copy</button></div>
+<pre id="s4">Cleaners wanted: Who Did That Professional Cleaning
+
+We're growing and need reliable cleaners who take pride in a job done properly.
+
+What you get:
+- Regular shifts with a friendly team
+- Clear checklists, so you always know what's expected
+- Paid training and a buddy for your first week
+
+What we need:
+- Reliable, on time, and good with people
+- Own transport or easy access to [area]
+- Experience is a plus, attitude matters more
+
+To apply, message us your name, the areas you can work, and your available days. We reply to every application within 48 hours.</pre>
+  </div>
+</section>
+
+<section id="clients">
+  <div class="head">
+    <div class="eyebrow">09 &middot; Client journey</div>
+    <h2>Every client gets the same smooth experience</h2>
+    <p class="lede">These messages go out at every step so clients feel looked after and come back. All ready to load into your booking tool.</p>
+  </div>
+
+  <div class="script">
+    <div class="script-h"><strong>1. Booking confirmation</strong><button class="copy" type="button" data-copy="c1">Copy</button></div>
+<pre id="c1">Hi [Name], you're all booked with WDT Professional Cleaning for [day, date] at [time]. Your cleaner will message when they're on the way. Anything we should know before we arrive, like pets, parking or access? Just reply here.</pre>
+  </div>
+  <div class="script">
+    <div class="script-h"><strong>2. Reminder, day before</strong><button class="copy" type="button" data-copy="c2">Copy</button></div>
+<pre id="c2">Hi [Name], quick reminder we're coming tomorrow at [time]. See you then!</pre>
+  </div>
+  <div class="script">
+    <div class="script-h"><strong>3. After the clean, with photos</strong><button class="copy" type="button" data-copy="c3">Copy</button></div>
+<pre id="c3">All done, [Name]! Here are your after photos. If anything isn't right, tell us within 24 hours and we'll come back and fix it, no charge.</pre>
+  </div>
+  <div class="script">
+    <div class="script-h"><strong>4. Review request, next day</strong><button class="copy" type="button" data-copy="c4">Copy</button></div>
+<pre id="c4">Hi [Name], hope you're enjoying the fresh space. If you were happy with the clean, a quick Google review would mean a lot to our small team: [link]. Thank you!</pre>
+  </div>
+  <div class="script">
+    <div class="script-h"><strong>5. Rebook nudge, 3 weeks later</strong><button class="copy" type="button" data-copy="c5">Copy</button></div>
+<pre id="c5">Hi [Name], it's been a few weeks since your clean. Want me to lock in your next one? I have [day] or [day] open.</pre>
+  </div>
+</section>
+
+<section id="rollout">
+  <div class="head">
+    <div class="eyebrow">10 &middot; First 90 days</div>
+    <h2>How we roll it out without disrupting your jobs</h2>
+  </div>
+  <div class="phases">
+    <div class="phase"><div class="wk">Weeks 1 to 2</div><h3>Set up</h3>
+      <ul class="clean"><li>Learn your services, prices and clients</li><li>Build trackers and job sheets</li><li>Load client message templates</li><li>Take over inbox, WhatsApp and scheduling</li><li>Set up WhatsApp quick replies</li></ul></div>
+    <div class="phase"><div class="wk">Weeks 3 to 6</div><h3>Run and fix</h3>
+      <ul class="clean"><li>Cold calling and cold email start</li><li>Cleaners move to job sheets and photo proof</li><li>Review requests after every job</li><li>Weekly check-in with you to adjust</li></ul></div>
+    <div class="phase"><div class="wk">Weeks 7 to 12</div><h3>Grow</h3>
+      <ul class="clean"><li>Hiring funnel running for new cleaners</li><li>Monthly email to past clients goes live</li><li>Track what lead source brings the best jobs</li><li>Plan for the next quarter together</li></ul></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-h"><h3>What you see in the Monday report</h3><span class="tag">One page</span></div>
+    <div class="panel-b">
+      <div class="kpis">
+        <div class="kpi"><div class="n">Calls made</div><div class="t">and conversations reached</div></div>
+        <div class="kpi"><div class="n">Emails sent and replies</div><div class="t">cold outreach results</div></div><div class="kpi"><div class="n">WhatsApp enquiries</div><div class="t">replied, quoted, booked</div></div><div class="kpi"><div class="n">Walkthroughs booked</div><div class="t">from every channel</div></div>
+        <div class="kpi"><div class="n">Quotes sent and won</div><div class="t">with win rate</div></div>
+        <div class="kpi"><div class="n">Jobs completed</div><div class="t">with photo proof</div></div>
+        <div class="kpi"><div class="n">New reviews</div><div class="t">and average rating</div></div>
+        <div class="kpi"><div class="n">Money in and owed</div><div class="t">overdue invoices flagged</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="start">
+  <div class="head">
+    <div class="eyebrow">11 &middot; Next step</div>
+    <h2>Pick where you want me to start</h2>
+    <p class="lede">You don't have to hand over everything at once. Start with the part that is costing WDT the most time, then add the rest.</p>
+  </div>
+  <div class="offer">
+    <div class="pkg"><span class="tag">Option 1</span><h3>Back Office</h3><p class="for">For when the inbox and schedule are drowning you.</p>
+      <ul class="clean"><li>Daily admin rhythm</li><li>WhatsApp enquiries and follow-ups</li><li>Client messages and reminders</li><li>Invoicing and review requests</li><li>Monday report</li></ul></div>
+    <div class="pkg pick"><span class="tag">Option 2</span><h3>Back Office + Growth</h3><p class="for">For when you want more regular accounts coming in.</p>
+      <ul class="clean"><li>Everything in Back Office</li><li>Cold calling and cold email</li><li>Monthly email marketing</li><li>Lead tracker and pipeline</li><li>Rebook system for past clients</li></ul></div>
+    <div class="pkg"><span class="tag">Option 3</span><h3>Full System</h3><p class="for">For when you are ready to scale the team.</p>
+      <ul class="clean"><li>Everything in Option 2</li><li>Cleaner job sheets and photo proof</li><li>Hiring and onboarding funnel</li><li>Quality checks and 30-day reviews</li></ul></div>
+  </div>
+
+  <div class="close">
+    <div>
+      <h2>This is how WDT runs from here.</h2>
+      <p>Faster replies. A full calendar. Cleaners who all work to the same standard. Clients who get photo proof, leave reviews and book again. And an owner who gets his time back.</p>
+      <p>Pick your starting option and we set it up in the first two weeks. You keep cleaning, the system does the rest.</p>
+      <div class="sig">Queen Hyra</div>
+    </div>
+    <div class="contact">
+      <div class="cline"><span>mnalingqueenhyraj@gmail.com</span><button class="copy" type="button" data-copytext="mnalingqueenhyraj@gmail.com">Copy</button></div>
+      <div class="cline"><span>+63 921 964 4373</span><button class="copy" type="button" data-copytext="+63 921 964 4373">Copy</button></div>
+      <div class="cline"><span>CLTS Creatives</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+</div>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var txt = btn.dataset.copytext || (document.getElementById(btn.dataset.copy)||{}).innerText || '';
+    var done=function(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done')},1600)};
+    var fallback=function(){
+      var el=btn.dataset.copy?document.getElementById(btn.dataset.copy):btn.previousElementSibling;
+      if(!el)return;var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selected';
+    };
+    try{navigator.clipboard.writeText(txt).then(done,fallback)}catch(e){fallback()}
+  });
+});
+(function(){
+  var boxes=document.querySelectorAll('#rooms input');var prog=document.getElementById('prog');var sign=document.getElementById('sign');
+  function upd(){var n=0;boxes.forEach(function(b){if(b.checked)n++});prog.textContent=n+' of '+boxes.length+' done';sign.textContent=n===boxes.length?'Signed off by: WDT team':'Signed off by: ______'}
+  boxes.forEach(function(b){b.addEventListener('change',upd)});upd();
+})();
+</script>
+</body>
+</html>
